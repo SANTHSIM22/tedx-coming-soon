@@ -8,8 +8,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >
-      <StarsCanvas/>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <StarsCanvas />
         {children}
       </body>
     </html>
