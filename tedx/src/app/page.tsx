@@ -1,11 +1,9 @@
 "use client";
-
-import Footer from "./components/footer";
 import Hero from "./components/hero";
 import { Header } from "./components/header";
 import { Gallery } from "./components/gallery";
 
-import { BacktoUpButton } from "./components/back-to-up";
+import { BacktoTopButton } from "./components/back-to-top";
 
 export default function Home() {
     return (
@@ -30,7 +28,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="mb-44">
-                    <BacktoUpButton />
+                    <BacktoTopButton />
                 </div>
             </section>
         </>
