@@ -1,17 +1,20 @@
 "use client";
 import Hero from "./components/hero";
 import { Header } from "./components/header";
-import { Gallery } from "./components/gallery";
 
+import dynamic from "next/dynamic";
 import { BacktoTopButton } from "./components/back-to-top";
-import { useState } from "react";
-import { RotateLoader } from "react-spinners";
+import { Suspense, useState } from "react";
+import { Loading } from "./components/loading";
+const Gallery = dynamic(() => import("./components/gallery").then((mod) => mod.Gallery), { ssr: false });
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
+    
     setTimeout(() => {
         setLoading(false);
-    }, 3000);
+    }, 5000);
+   
     return (
         <>
             <div className="relative min-h-screen ">
@@ -24,7 +27,7 @@ export default function Home() {
                 <div>
                     {loading ? (
                         <div className="w-screen h-screen flex justify-center items-center">
-                            <RotateLoader color="#EB0028" />
+                            <Loading />
                         </div>
                     ) : (
                         <Hero />
@@ -36,7 +39,9 @@ export default function Home() {
             <section id="gallery-section">
                 <div className="w-screen h-screen  flex  justify-center no-scrollbar ">
                     <div className="w-screen  flex justify-center no-scrollbar flex-row md:flex-col">
-                        <Gallery />
+                        <Suspense fallback={<div>Loading Gallery...</div>}>
+                            <Gallery />
+                        </Suspense>
                     </div>
                 </div>
                 <div className="mb-44">
