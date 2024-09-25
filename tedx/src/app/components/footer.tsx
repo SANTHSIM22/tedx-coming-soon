@@ -18,8 +18,8 @@ const Footer = () => {
 
       <footer className="text-white fixed bottom-0 left-0 z-20 right-0 mb-5 footeri">
         <div  className="container mx-auto flex flex-col sm:flex-row justify-between items-center footeri ">
-          <p className="text-center sm:text-left mb-4 sm:mb-0">&copy; {new Date().getFullYear()} Tedx SJEC. All rights reserved.</p>
-          <ul className="flex flex-wrap justify-center space-x-6">
+          <p className="text-center sm:text-left mb-4 px-8 sm:mb-0">&copy; {new Date().getFullYear()} Tedx SJEC. All rights reserved.</p>
+          <ul className="flex flex-wrap justify-center space-x-6 px-8">
             <li>
               <a onClick={openModal} className="cursor-pointer l">
                 <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
