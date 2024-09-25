@@ -13,7 +13,7 @@ const Hero = () => {
         timeline
             .from(".split-text", { duration: 0.5, opacity: 0, stagger: 0.2 })
             .to(".tok", { duration: 0.5, y: 150, scale: 0.7 })
-            .from(".img1", { duration: 0.5, scale: 0})
+            .from(".img1", { duration: 0.5, scale: 0 })
             .to(".img1", { duration: 0.5, scale: 0.58, opacity: 1 })
             .from(".toggle-1", { x: -80, duration: 0.5, opacity: 0 })
             .from(".toggle-2", { x: 80, duration: 0.5, opacity: 0 }, "<")
@@ -57,8 +57,9 @@ const Hero = () => {
                             <span className="split-text">N</span>
                         </div>
                     </div>
-                    <div className="absolute xs:bottom-10 bottom-[240px] md:bottom-32 w-full flex justify-center items-center mt-10 z-50">
+                    <div className="absolute xs:bottom-10 bottom-[240px] md:bottom-32 w-full flex justify-center items-center mt-10 ">
                         <a
+                        className="z-40"
                             href="#"
                             onClick={(e) => {
                                 e.preventDefault();
