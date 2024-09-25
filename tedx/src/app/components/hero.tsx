@@ -13,7 +13,7 @@ const Hero = () => {
         timeline
             .from(".split-text", { duration: 0.5, opacity: 0, stagger: 0.2 })
             .to(".tok", { duration: 0.5, y: 150, scale: 0.7 })
-            .from(".img1", { duration: 0.5, scale: 0 })
+            .from(".img1", { duration: 0.5, scale: 0})
             .to(".img1", { duration: 0.5, scale: 0.58, opacity: 1 })
             .from(".toggle-1", { x: -80, duration: 0.5, opacity: 0 })
             .from(".toggle-2", { x: 80, duration: 0.5, opacity: 0 }, "<")
