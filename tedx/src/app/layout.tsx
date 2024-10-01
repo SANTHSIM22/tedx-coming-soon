@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import "./globals.css";
-
+import { StarsCanvas } from "./ui/stars";
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -19,6 +19,7 @@ export default function RootLayout({
             </head>
             <body>
                 {children}
+                <StarsCanvas/>
             </body>
         </html>
     );
