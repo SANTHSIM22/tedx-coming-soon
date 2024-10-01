@@ -6,17 +6,18 @@ import { easing } from "maath";
 import "./utils";
 
 export const Gallery = () => (
-    <Canvas camera={{ position: [0, 0, 100], fov: 15 }} className="rounded-2xl">
+    <Canvas camera={{ position: [0, 0, 10], fov:15 }} className="rounded-2xl h-screen z-10">
         <fog attach="fog" args={["#a79", 8.5, 12]} />
         <ScrollControls
             pages={4}
-            infinite
+           infinite
             style={{
+        
                 scrollbarWidth: "none" /* For Firefox */,
                 msOverflowStyle: "none" /* For Internet Explorer and Edge */,
             }}
         >
-            <Rig rotation={[0, 0, 0.15]}>
+            <Rig rotation={[0, 0, 0.30]}>
                 <Carousel />
             </Rig>
             <Banner position={[0, -0.15, 0]} />

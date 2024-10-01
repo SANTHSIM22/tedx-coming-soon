@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-page-custom-font */
-
-import Footer from "./components/footer";
 import "./globals.css";
 import { StarsCanvas } from "./ui/stars";
 
@@ -23,8 +21,6 @@ export default function RootLayout({
             <body>
                 <StarsCanvas />
                 {children}
-
-                <Footer />
             </body>
         </html>
     );
