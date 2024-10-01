@@ -1,17 +1,6 @@
 'use client'
-import React, { useState } from 'react';
 
 const Footer = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  };
 
   return (
     <>
@@ -74,14 +63,6 @@ const Footer = () => {
 
           </ul>
         </div>
-
-        {isModalOpen && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50  " onClick={handleOverlayClick}>
-    <div className="relative   bg-white rounded-lg max-w-screen-sm z-50   w-full" onClick={e => e.stopPropagation()}>
-      <iframe className="rounded-xl w-full " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.952117493349!2d74.89609701057077!3d12.910799087346417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba359dfac132663%3A0xa7bf228838232d32!2sSt%20Joseph%20Engineering%20College!5e0!3m2!1sen!2sin!4v1726594963441!5m2!1sen!2sin" loading="lazy" style={{ display: 'block', width: '100%', height: '100%' }}></iframe>
-    </div>
-  </div>
-)}
 
       </footer>
     </>

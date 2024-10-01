@@ -3,8 +3,6 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FaAnglesDown } from "react-icons/fa6";
 import images from "@/images/logo-white.png";
 const Hero = () => {
     gsap.registerPlugin(useGSAP);
