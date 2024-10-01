@@ -4,87 +4,96 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
+import { FaAnglesDown } from "react-icons/fa6";
+import images from "@/images/logo-white.png";
 const Hero = () => {
     gsap.registerPlugin(useGSAP);
 
     useGSAP(() => {
         const timeline = gsap.timeline({});
         timeline
-            .from(".split-text", { duration: 0.5, opacity: 0, stagger: 0.2 })
-            .to(".tok", { duration: 0.5, y: 150, scale: 0.7 })
-            .from(".img1", { duration: 0.5, scale: 0 })
-            .to(".img1", { duration: 0.5, scale: 0.58, opacity: 1 })
-            .from(".toggle-1", { x: -80, duration: 0.5, opacity: 0 })
-            .from(".toggle-2", { x: 80, duration: 0.5, opacity: 0 }, "<")
-            .from(".head", { y: -300, duration: 0.5, opacity: 0 })
-            .from(".footeri", { y: 100, duration: 0.5, opacity: 0, stagger: 0.3 })
+            .from(".img1", { duration: 1.1,scale:0})
+            .from(".head1",{duration:0.7,x:-1500})
+            .from(".split-text", { duration: 0.4, opacity: 0, stagger: 0.2 })
+            .from(".head", { y: -300, duration: 0.8, opacity: 0 },'end')
+    
+
             // .from(".img", { y: -300, duration: 0.5, opacity: 0 }, "<")
-            .from(".l", { y: 100, duration: 0.5, opacity: 0, stagger: 0.3 });
+            .from(".back-top",{opacity:0,x:300,duration:0.8},'end')
+            .from(".dot", { opacity: 0, duration: 1, stagger: 0.3, repeat: -1});
         // .from(".nav-links", { y: 100, duration: 0.3, opacity: 0, stagger: 0.3 }, "<");
     });
 
     return (
         <>
-            <div className="relative min-h-screen">
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-5xl md:text-9xl  flex ">
-                        <div className="inline-block toggle-1 font-extrabold text-[#EB0028] "> TED </div>
-                        <span className="mx-16 md:mx-36 "></span>
-                        <div className="inline-block toggle-2 text-5xl md:text-9xl">SJEC</div>
+        <div className="flex flex-col justify-center items-center  ">
+    
+            {/* Background Image */}
+            <div className="flex flex-col justify-center items-center h-screen  w-full relative">
+    {/* Background Image */}
+    <div className="absolute -z-20 flex justify-center items-center img1">
+        <div className="relative w-[100vw] h-[100vh] lg:w-[73vw] lg:h-[73vh] opacity-30 mt-20  ">
+            <Image src="/logo.png" alt="Background Image" layout="fill" objectFit="cover" />
+        </div>
+    </div>
+
+    {/* Logo Image */}
+    <div>
+        <Image
+            src={images}
+            alt="Logo"
+            width={900}
+            height={900}
+            className="rounded-full head1 "
+        />
+    </div>
+
+    {/* Coming Soon Text */}
+    <div className="lg:ml-32 tok sm:text-5xl md:text-6xl text-2xl lg:text-7xl font-bold relative text-center mt-4 md:mt-6">
+        <div className="inline-block space-x-2 coming">
+            {["C", "O", "M", "I", "N", "G"].map((letter) => (
+                <span key={letter} className="split-text">{letter}</span>
+            ))}
+        </div>
+        <span className="ml-10"></span>
+        <div className="inline-block space-x-2 soon text-[#EB0028]">
+            {["S", "O", "O", "N"].map((letter) => (
+                <span key={letter} className="split-text">{letter}</span>
+            ))}
+        </div>
+        <div className="inline-block space-x-2  text-[white]">
+                        {[".", ".", ".","."].map((letter) => (
+                            <span key={letter} className="dot">{letter}</span>
+                        ))}
                     </div>
-                </div>
-                <div className="absolute inset-0 -z-20 flex items-center justify-center mr-2">
-                    <div className="relative w-[50vw] h-[50vw] max-w-[430px] max-h-[430px] img1">
-                        <Image src={"/logo.png"} alt="Background Image" layout="fill" objectFit="cover" />
+    </div>
+</div>
+
+    
+            {/* Scroll Down Button */}
+            <div className="absolute bottom-10 flex justify-center items-center w-full mt-10">
+                <a
+                    className="z-40"
+                    href="#"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        const section = document.getElementById("gallery-section");
+                        section?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                >
+                    <div className="w-[35px] h-[64px] flex justify-center items-start p-2">
+                        <button>
+                            {/* Arrow Icon */}
+                            {/* <div className="arrow-container">
+                                <FaAnglesDown className="arrow" size={70} />
+                            </div> */}
+                        </button>
                     </div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center tok">
-                    <div className="text-6xl  font-bold mt-4 text-white font-[Satoshi] md:text-9xl">
-                        <div className="inline-block space-x-2 text-2xl md:text-9xl">
-                            <span className="split-text">C</span>
-                            <span className="split-text">O</span>
-                            <span className="split-text">M</span>
-                            <span className="split-text">I</span>
-                            <span className="split-text">N</span>
-                            <span className="split-text">G</span>
-                        </div>
-                        <span className="ml-10"></span>
-                        <div className="inline-block space-x-2 text-[#EB0028] text-2xl md:text-9xl">
-                            <span className="split-text">S</span>
-                            <span className="split-text">O</span>
-                            <span className="split-text">O</span>
-                            <span className="split-text">N</span>
-                        </div>
-                    </div>
-                    <div className="absolute xs:bottom-10 bottom-[240px] md:bottom-32 w-full flex justify-center items-center mt-10 ">
-                        <a
-                        className="z-40"
-                            href="#"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                const section = document.getElementById("gallery-section");
-                                section?.scrollIntoView({ behavior: "smooth" });
-                            }}
-                        >
-                            <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
-                                <motion.div
-                                    animate={{
-                                        y: [0, 24, 0],
-                                    }}
-                                    transition={{
-                                        duration: 1.5,
-                                        repeat: Infinity,
-                                        repeatType: "loop",
-                                    }}
-                                    className="w-3 h-3 rounded-full bg-white mb-1"
-                                />
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                </a>
             </div>
-        </>
+        </div>
+    </>
+    
     );
 };
 
