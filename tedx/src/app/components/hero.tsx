@@ -4,9 +4,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import images from "@/images/logo-white.png";
-const Hero = () => {
-    gsap.registerPlugin(useGSAP);
 
+const Hero = () => {
+
+    gsap.registerPlugin(useGSAP);         
     useGSAP(() => {
         const timeline = gsap.timeline({});
         timeline
@@ -31,7 +32,7 @@ const Hero = () => {
     {/* Background Image */}
     <div className="absolute -z-20 flex justify-center items-center img1">
         <div className="relative w-[100vw] h-[100vh] lg:w-[73vw] lg:h-[73vh] opacity-30 mt-20  ">
-            <Image src="/logo.png" alt="Background Image" layout="fill" objectFit="cover" />
+            <Image src="/logo.png" className="hero_icon" alt="Background Image" layout="fill" objectFit="cover" />
         </div>
     </div>
 
@@ -40,8 +41,8 @@ const Hero = () => {
         <Image
             src={images}
             alt="Logo"
-            width={900}
-            height={900}
+            width={700}
+            height={700}
             className="rounded-full head1 "
         />
     </div>
@@ -60,7 +61,7 @@ const Hero = () => {
             ))}
         </div>
         <div className="inline-block space-x-2  text-[white]">
-                        {[".", ".", ".","."].map((letter) => (
+                        {[".", ".", "."].map((letter) => (
                             <span key={letter} className="dot">{letter}</span>
                         ))}
                     </div>

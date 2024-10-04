@@ -18,8 +18,8 @@ export default function RootLayout({
                 />
             </head>
             <body>
+            {/* <StarsCanvas/> */}
                 {children}
-                <StarsCanvas/>
             </body>
         </html>
     );
