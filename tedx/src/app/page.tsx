@@ -54,7 +54,7 @@ export default function Home() {
               Highlights of <span className="text-white">TEDxSJEC 2022</span>
             </h1>
           </div>
-          <div className="w-screen flex justify-center no-scrollbar cursor-pointer">
+          <div className="w-screen hidden md:flex justify-center no-scrollbar cursor-pointer">
             <div className="w-[100vw] mb-24 lg:w-[70vw] h-[60vh] md:h-[75vh] lg:h-[90vh] flex justify-center no-scrollbar flex-row md:flex-col">
               {galleryLoading ? (
                 <div className="flex justify-center items-center w-full h-full">

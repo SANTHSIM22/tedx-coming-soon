@@ -12,12 +12,12 @@ export const Gallery = () => {
   const isMobileDevice = isMobile();
   const count = useMemo(() => (isMobileDevice ? 6 : 7), [isMobileDevice]);
   return (
-    <Canvas
-      camera={{ position: [0, 0, 10], fov: 25 }}
-      className="h-screen z-10"
-      pixelRatio={window.devicePixelRatio}
-      gl={{ antialias: true }}
-    >
+<Canvas
+  camera={{ position: [0, 0, 10], fov: 25 }}
+  className="h-screen z-10"
+  pixelRatio={window.devicePixelRatio}
+  gl={{ antialias: true, powerPreference: "high-performance" }}
+>
       <fog attach="fog" args={["#a79", 8.5, 12]} />
       <ScrollControls
         pages={3}
@@ -101,7 +101,7 @@ function Card({ url, ...props }) {
       transparent
       side={THREE.DoubleSide}
       onPointerOver={pointerOver}
-      onPointerOut={pointerOut}
+      onPointerOut={pointerOut} 
       {...props}
     >
       <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
