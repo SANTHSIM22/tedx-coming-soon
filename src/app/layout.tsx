@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-page-custom-font */
 import "./globals.css";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,23 +7,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="no-scrollbar">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        <link
-          href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
-        {/* <StarsCanvas/> */}
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
