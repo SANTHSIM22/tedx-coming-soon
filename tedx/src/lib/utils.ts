@@ -1,12 +1,12 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-import * as THREE from 'three';
-import { extend } from '@react-three/fiber';
+import * as THREE from "three";
+import { extend } from "@react-three/fiber";
 
 class BentPlaneGeometry extends THREE.PlaneGeometry {
   constructor(radius: number, ...args: any[]) {
@@ -19,7 +19,8 @@ class BentPlaneGeometry extends THREE.PlaneGeometry {
     const ab = new THREE.Vector2().subVectors(a, b);
     const bc = new THREE.Vector2().subVectors(b, c);
     const ac = new THREE.Vector2().subVectors(a, c);
-    const r = (ab.length() * bc.length() * ac.length()) / (2 * Math.abs(ab.cross(ac)));
+    const r =
+      (ab.length() * bc.length() * ac.length()) / (2 * Math.abs(ab.cross(ac)));
     const center = new THREE.Vector2(0, radius - r);
     const baseV = new THREE.Vector2().subVectors(a, center);
     const baseAngle = baseV.angle() - Math.PI * 0.5;
@@ -54,8 +55,8 @@ class MeshSineMaterial extends THREE.MeshBasicMaterial {
       ${shader.vertexShader}
     `;
     shader.vertexShader = shader.vertexShader.replace(
-      '#include <begin_vertex>',
-      `vec3 transformed = vec3(position.x, position.y + sin(time + uv.x * PI * 4.0) / 4.0, position.z);`
+      "#include <begin_vertex>",
+      `vec3 transformed = vec3(position.x, position.y + sin(time + uv.x * PI * 4.0) / 4.0, position.z);`,
     );
   }
 }
