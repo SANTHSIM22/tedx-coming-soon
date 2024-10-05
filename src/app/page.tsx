@@ -4,10 +4,14 @@ import { NumberTicker } from "@/components/ui/number-ticker";
 import { motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import React, { useEffect, useState } from "react";
-import { Footer } from "../components/sections/footer";
-import { Gallery } from "../components/sections/gallery";
-import { Hero } from "../components/sections/hero";
+import { Footer } from "@/components/sections/footer";
+import { Hero } from "@/components/sections/hero";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const Gallery = dynamic(() => import("@/components/sections/gallery").then((galleryModule) => galleryModule.Gallery), {
+  ssr: false,
+});
 
 const inter = Inter({
   weight: ["300", "400", "700"],
@@ -24,7 +28,7 @@ const Preloader: React.FC<{ progress: number }> = ({ progress }) => (
     >
       <div className="flex justify-center">
         <Image
-          src="/logo-white.png"
+          src="/tedxsjec-white.png"
           alt="TEDxSJEC"
           width={400}
           height={400}

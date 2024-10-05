@@ -1,11 +1,6 @@
 import * as THREE from "three";
 import React, { useRef, useState, useCallback, useMemo } from "react";
-import {
-  Canvas,
-  useFrame,
-  MeshProps,
-  GroupProps,
-} from "@react-three/fiber";
+import { Canvas, useFrame, MeshProps, GroupProps } from "@react-three/fiber";
 import {
   Image,
   ScrollControls,
@@ -19,7 +14,7 @@ import "@/lib/extenders/meshSineMaterial";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 const carouselImages: { src: string }[] = Array.from({ length: 9 }, (_, i) => ({
-  src: `/img${Math.floor(i % 10) + 1}_.jpg.jpg`,
+  src: `/highlights/img${i + 1}.avif`,
 }));
 
 const radius = 2;
@@ -27,7 +22,6 @@ const radius = 2;
 export const Gallery = () => {
   return (
     <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
-      <fog attach="fog" args={["#a79", 8.5, 12]} />
       <ScrollControls style={{ scrollbarWidth: "none" }} pages={4} infinite>
         <Carousel
           rotation={[0, 0, 0.15]}
@@ -64,19 +58,30 @@ const Carousel: React.FC<CarouselProps> = ({ radius, images, ...props }) => {
 
   const cardsCount = images.length;
 
-  const cards = useMemo(() =>
-    images.map((image, i) => (
-      <Card
-        key={i}
-        url={image.src}
-        position={[
+  const cards = useMemo(
+    () =>
+      images.map((image, i) => {
+        const position = new THREE.Vector3(
           Math.sin((i / cardsCount) * Math.PI * 2) * radius,
           0,
-          Math.cos((i / cardsCount) * Math.PI * 2) * radius,
-        ]}
-        rotation={[0, Math.PI + (i / cardsCount) * Math.PI * 2, 0]}
-      />
-    )),
+          Math.cos((i / cardsCount) * Math.PI * 2) * radius
+        );
+
+        const rotation = new THREE.Euler(
+          0,
+          Math.PI + (i / cardsCount) * Math.PI * 2,
+          0
+        );
+
+        return (
+          <Card
+            key={i}
+            url={image.src}
+            position={position}
+            rotation={rotation}
+          />
+        );
+      }),
     [images, cardsCount, radius]
   );
 
@@ -87,7 +92,7 @@ const Carousel: React.FC<CarouselProps> = ({ radius, images, ...props }) => {
   );
 };
 
-const Card: React.FC<ImageProps> = (props) => {
+const Card: React.FC<ImageProps> = React.memo((props) => {
   const ref = useRef<THREE.Mesh>(null);
   const [hovered, setHover] = useState(false);
   const isMobile = useIsMobile();
@@ -98,12 +103,16 @@ const Card: React.FC<ImageProps> = (props) => {
 
   useFrame((_, delta) => {
     if (!ref.current) return;
+
+    // Scale animation based on hover state
     easing.damp3(
       ref.current.scale,
       hovered ? (isMobile ? 0.8 : 1.15) : isMobile ? 0.75 : 1,
       0.1,
       delta
     );
+
+    // Update material uniforms if the material is ShaderMaterial
     if (ref.current.material instanceof THREE.ShaderMaterial) {
       easing.damp(
         ref.current.material.uniforms.radius,
@@ -137,7 +146,9 @@ const Card: React.FC<ImageProps> = (props) => {
       <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
     </Image>
   );
-};
+});
+
+Card.displayName = "Card";
 
 interface BannerProps extends MeshProps {
   radius: number;
@@ -145,13 +156,14 @@ interface BannerProps extends MeshProps {
 
 const Banner: React.FC<BannerProps> = ({ radius, ...props }) => {
   const ref = useRef<THREE.Mesh>(null);
-  const texture = useTexture("/logo-white.png");
+  const texture = useTexture("/tedxsjec-white.png");
 
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   const scroll = useScroll();
 
   useFrame((_, delta) => {
-    if (!ref.current || !(ref.current.material instanceof THREE.ShaderMaterial)) return;
+    if (!ref.current || !(ref.current.material instanceof THREE.ShaderMaterial))
+      return;
     ref.current.material.uniforms.time.value += Math.abs(scroll.delta) * 4;
     texture.offset.x += delta / 2;
   });

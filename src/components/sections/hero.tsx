@@ -2,7 +2,6 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import images from "@/images/logo-white.png";
 
 export const Hero = () => {
   gsap.registerPlugin(useGSAP);
@@ -44,7 +43,7 @@ export const Hero = () => {
           {/* Logo Image */}
           <div>
             <Image
-              src={images}
+              src={'/tedxsjec-white.png'}
               alt="Logo"
               width={700}
               height={700}
