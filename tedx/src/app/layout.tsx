@@ -1,5 +1,11 @@
 /* eslint-disable @next/next/no-page-custom-font */
+"use client";
+import { useEffect, useState } from "react";
+import React from "react";
 import "./globals.css";
+import { StarsCanvas } from "./ui/stars";
+import { Dots_v1 } from "./components/start-loader";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -14,15 +20,16 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-
         <link
           href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
-        {/* <StarsCanvas/> */}
-        {children}
+        <>
+          <StarsCanvas />
+          {children}
+        </>
       </body>
     </html>
   );

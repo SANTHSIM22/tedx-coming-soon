@@ -1,8 +1,13 @@
-    
 import * as THREE from "three";
 import { useRef, useState, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Image, Environment, ScrollControls, useScroll, useTexture } from "@react-three/drei";
+import {
+  Image,
+  Environment,
+  ScrollControls,
+  useScroll,
+  useTexture,
+} from "@react-three/drei";
 import { easing } from "maath";
 import "./utils";
 
@@ -10,18 +15,17 @@ const isMobile = () => /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 export const Gallery = () => {
   const isMobileDevice = isMobile();
-  const count = useMemo(() => (isMobileDevice ? 6 : 7), [isMobileDevice]);
+  const count = useMemo(() => (isMobileDevice ? 7 : 7), [isMobileDevice]);
   return (
-<Canvas
-  camera={{ position: [0, 0, 10], fov: 25 }}
-  className="h-screen z-10"
-  pixelRatio={window.devicePixelRatio}
-  gl={{ antialias: true, powerPreference: "high-performance" }}
->
+    <Canvas
+      camera={{ position: [0, 0, 10], fov: 25 }}
+      className="h-screen z-10"
+      pixelRatio={window.devicePixelRatio}
+      gl={{ antialias: true, powerPreference: "high-performance" }}
+    >
       <fog attach="fog" args={["#a79", 8.5, 12]} />
       <ScrollControls
         pages={3}
-        infinite
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -52,7 +56,7 @@ function Rig(props) {
       delta,
     );
     state.camera.lookAt(0, 0, 0);
-    ref.current.scale.set(1.5, 1.5, 1.5);
+    ref.current.scale.set(1.8, 1.8, 1.8);
   });
 
   return <group ref={ref} {...props} />;
@@ -73,7 +77,7 @@ function Carousel({ radius = 1.2, count = 6 }) {
           rotation={[0, Math.PI + (i / count) * Math.PI * 2, 0]}
         />
       )),
-    [count, radius]
+    [count, radius],
   );
 }
 
@@ -90,7 +94,13 @@ function Card({ url, ...props }) {
 
   useFrame((state, delta) => {
     easing.damp3(ref.current.scale, hovered ? 1.15 : 1, 0.1, delta);
-    easing.damp(ref.current.material, "radius", hovered ? 0.25 : 0.1, 0.2, delta);
+    easing.damp(
+      ref.current.material,
+      "radius",
+      hovered ? 0.25 : 0.1,
+      0.2,
+      delta,
+    );
     easing.damp(ref.current.material, "zoom", hovered ? 1 : 1.5, 0.2, delta);
   });
 
@@ -101,7 +111,7 @@ function Card({ url, ...props }) {
       transparent
       side={THREE.DoubleSide}
       onPointerOver={pointerOver}
-      onPointerOut={pointerOut} 
+      onPointerOut={pointerOut}
       {...props}
     >
       <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
@@ -118,7 +128,7 @@ function Banner(props) {
   useFrame((state, delta) => {
     ref.current.material.time.value += Math.abs(scroll.delta) * 4;
     ref.current.material.map.offset.x += delta / 2;
-    ref.current.scale.set(1.5, 1.5, 1.5);
+    ref.current.scale.set(1.8, 1.8, 1.8);
   });
 
   return (

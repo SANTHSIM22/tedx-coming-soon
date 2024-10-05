@@ -12,7 +12,7 @@ export const BacktoTopButton = () => {
         });
       }}
     >
-      <button className="h-16 w-16  back-top rounded-full flex justify-center items-center mr-5">
+      <button className="h-16 w-16  bg-white back-top rounded-full flex justify-center items-center mr-5">
         <GoArrowUp size={45} />
       </button>
     </div>
