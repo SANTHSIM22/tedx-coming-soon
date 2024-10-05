@@ -12,17 +12,19 @@ export function useIsMobile() {
   const [isMobile, setIsMobile] = useState(getIsMobile());
 
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
     const onResize = () => {
       setIsMobile(getIsMobile());
     };
 
     if (typeof window !== "undefined") {
-      window.addEventListener("resize", onResize);
+      window.addEventListener("resize", onResize, { signal });
     }
 
     return () => {
       if (typeof window !== "undefined") {
-        window.removeEventListener("resize", onResize);
+        controller.abort();
       }
     };
   }, []);
