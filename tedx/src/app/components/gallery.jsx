@@ -1,6 +1,6 @@
     
 import * as THREE from "three";
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useRef, useState, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Image, Environment, ScrollControls, useScroll, useTexture } from "@react-three/drei";
 import { easing } from "maath";
@@ -11,7 +11,6 @@ const isMobile = () => /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 export const Gallery = () => {
   const isMobileDevice = isMobile();
   const count = useMemo(() => (isMobileDevice ? 6 : 7), [isMobileDevice]);
-  const imageUrls = useMemo(() => Array.from({ length: count }, (_, i) => `/img${Math.floor(i % 10) + 1}_.jpg`), [count]);
   return (
     <Canvas
       camera={{ position: [0, 0, 10], fov: 25 }}
