@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-page-custom-font */
 "use client";
-import { useEffect, useState } from "react";
 import React from "react";
 import "./globals.css";
 import TEDxStarsCanvas from "./ui/stars";
-import { Dots_v1 } from "./components/start-loader";
 
 export default function RootLayout({
   children,

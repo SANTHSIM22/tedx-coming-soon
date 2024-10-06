@@ -1,8 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Hero } from "./components/hero";
+import { Hero } from "./components/Landing";
 import dynamic from "next/dynamic";
-import { BacktoTopButton } from "./components/back-to-top";
 import Loading from "./components/loading";
 import Footer from "./components/footer";
 import ScrollVelocity from "./components/scroll-velocity";
@@ -177,25 +176,29 @@ export default function Home() {
               ))}
               <div>
               <ScrollVelocity1 velocity={3} movable={true}>
-                <div
-                  className="image-container"
-                  style={{ display: "flex", gap: "10px" }}
-                >
-                  {Array.from({ length: 200 }).map((_, index) => (
-                    <img
-                      key={index}
-                      src="/logo-white.png"
-                      className="hero_icon"
-                      alt={`Image ${index + 1}`}
-                      style={{
-                        objectFit: "cover",
-                        width: "100%",
-                        height: "50px",
-                      }}
-                    />
-                  ))}
-                </div>
-              </ScrollVelocity1>
+  {[
+    <div
+      key="image-container"
+      className="image-container"
+      style={{ display: "flex", gap: "10px" }}
+    >
+      {Array.from({ length: 200 }).map((_, index) => (
+        <img
+          key={index}
+          src="/logo-white.png"
+          className="hero_icon"
+          alt={`Image ${index + 1}`}
+          style={{
+            objectFit: "cover",
+            width: "100%",
+            height: "50px",
+          }}
+        />
+      ))}
+    </div>
+  ]}
+</ScrollVelocity1>
+
               </div>
             </div>
           </div>
