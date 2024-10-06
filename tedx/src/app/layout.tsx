@@ -3,7 +3,7 @@
 import React from "react";
 import "./globals.css";
 import TEDxStarsCanvas from "./ui/stars";
-
+import Footer from "./components/footer";
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -3,13 +3,12 @@ import React, { useState, useEffect } from "react";
 import Hero from "./components/Landing";
 import dynamic from "next/dynamic";
 import Loading from "./components/loading";
-import Footer from "./components/footer";
 import ScrollVelocity from "./components/scroll-velocity";
 import Image from "next/image";
 import ScrollVelocity1 from "./components/scroll-velocity2";
 import { NumberTicker } from "./components/number-ticker";
 import { motion } from "framer-motion";
-
+import Footer from "./components/footer";
 // Dynamic import for the gallery with 3js rendering
 const Gallery = dynamic(
   () => import("./components/gallery").then((mod) => mod.Gallery),
@@ -138,14 +137,14 @@ export default function Home() {
       </div>
 
       <div>
-        <section id="gallery-section" className="">
+        <section id="gallery-section" className="h-auto">
           <div className="w-full flex justify-center mt-20">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold text-red-600 text-center">
               Highlights of <span className="text-white">TEDxSJEC 2022</span>
             </h1>
           </div>
           <div className="w-screen hidden lg:flex justify-center no-scrollbar">
-            <div className="w-[100vw] mb-24 xl:w-[80vw] lg:w-[100vw] h-[60vh] md:h-[75vh] lg:h-[100vh] flex justify-center no-scrollbar flex-row md:flex-col">
+            <div className="w-[100vw]  xl:w-[80vw] lg:w-[100vw] h-[60vh] md:h-[75vh] lg:h-[84vh] flex justify-center no-scrollbar flex-row md:flex-col">
               {galleryLoading ? (
                 <div className="flex justify-center items-center w-full h-full">
                   <Loading /> {/* Loading spinner for 5 seconds */}
@@ -201,10 +200,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* <BacktoTopButton /> */}
+          <Footer />
         </section>
+
       </div>
-      <Footer />
+
     </>
   );
 }

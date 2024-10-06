@@ -56,7 +56,7 @@ function Rig(props) {
       delta,
     );
     state.camera.lookAt(0, 0, 0);
-    ref.current.scale.set(1.6, 1.6, 1.6);
+    ref.current.scale.set(1.8, 1.8, 1.8);
   });
 
   return <group ref={ref} {...props} />;
@@ -128,7 +128,7 @@ function Banner(props) {
   useFrame((state, delta) => {
     ref.current.material.time.value += Math.abs(scroll.delta) * 4;
     ref.current.material.map.offset.x += delta / 2;
-    ref.current.scale.set(1.6, 1.6, 1.6);
+    ref.current.scale.set(1.8, 1.8, 1.8);
   });
 
   return (
