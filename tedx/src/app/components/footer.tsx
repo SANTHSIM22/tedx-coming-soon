@@ -3,14 +3,14 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <footer className="text-white relative bottom-0 left-0 z-20 right-0 mb-3 footeri">
-        <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center footeri ">
-          <p className="text-center sm:text-left mb-4 px-8 sm:mb-0">
+      <footer className="text-white relative bottom-0 left-0 z-20 right-0  footeri">
+        <div className="container mx-auto flex flex-col-reverse sm:flex-row justify-between items-center footeri ">
+          <p className="text-center sm:text-left mb-4 sm:mt-4 px-8 sm:mb-4">
             &copy; {new Date().getFullYear()} Tedx SJEC. All rights reserved.
           </p>
           <ul className="flex flex-wrap justify-center space-x-6 px-8">
             <li className="hover:-translate-y-3 transition duration-300">
-              <a href="#about" className="hover:underline l">
+              <a href="https://www.instagram.com/tedxsjec/?__pwa=1" className="hover:underline l">
                 <svg
                   className="icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -36,31 +36,6 @@ const Footer = () => {
               </a>
             </li>
 
-            <li className="hover:-translate-y-3 transition duration-300">
-              <a className="cursor-pointer l">
-                <svg
-                  className="icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="white"
-                    d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm8-7l8-5V6l-8 5l-8-5v2z"
-                  />
-                </svg>
-                <style jsx>{`
-                  .icon {
-                    transition: fill 0.3s;
-                  }
-
-                  .icon:hover path {
-                    fill: red;
-                  }
-                `}</style>
-              </a>
-            </li>
 
             <li className="hover:-translate-y-3 transition duration-300">
               <a href="#services" className="hover:underline l">

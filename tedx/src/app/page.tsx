@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Hero } from "./components/Landing";
+import Hero from "./components/Landing";
 import dynamic from "next/dynamic";
 import Loading from "./components/loading";
 import Footer from "./components/footer";
@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 // Dynamic import for the gallery with 3js rendering
 const Gallery = dynamic(
   () => import("./components/gallery").then((mod) => mod.Gallery),
-  { ssr: false },
+  { ssr: false }, 
 );
 
 const Preloader: React.FC<{ progress: number }> = ({ progress }) => (
@@ -138,8 +138,8 @@ export default function Home() {
       </div>
 
       <div>
-        <section id="gallery-section">
-          <div className="w-full flex justify-center">
+        <section id="gallery-section" className="">
+          <div className="w-full flex justify-center mt-20">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold text-red-600 text-center">
               Highlights of <span className="text-white">TEDxSJEC 2022</span>
             </h1>
@@ -174,7 +174,7 @@ export default function Home() {
                   ))}
                 </ScrollVelocity>
               ))}
-              <div>
+              <div className="">
               <ScrollVelocity1 velocity={3} movable={true}>
   {[
     <div

@@ -1,22 +1,26 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+
+"use client";
+import React from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-
-export const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
+import images from "@/images/logo-white.png";
+import { useRef } from "react";
+const Hero = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  gsap.registerPlugin(useGSAP);
+  useGSAP(() => {
+    const timeline = gsap.timeline({});
+    timeline
+      .from(".img1", { duration: 1.1, scale: 0 })
+      .from(".head1", { duration: 0.7, x: -1500 })
+      .from(".split-text", { duration: 0.4, opacity: 0, stagger: 0.2 })
+      .from(".head", { y: -300, duration: 0.8, opacity: 0 }, "end")
 
-  useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
-
-    // Animating hero text
-    tl.fromTo(
-      heroRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1.5 }
-    );
-
-    // Animating scroll button
+      // .from(".img", { y: -300, duration: 0.5, opacity: 0 }, "<")
+      .from(".back-top", { opacity: 0, duration: 0.8 }, "end")
+      .from(".dot", { opacity: 0, duration: 1, stagger: 0.3, repeat: -1 });
+    // .from(".nav-links", { y: 100, duration: 0.3, opacity: 0, stagger: 0.3 }, "<");
     gsap.to(scrollRef.current, {
       y: 15,
       repeat: -1,
@@ -24,46 +28,70 @@ export const Hero = () => {
       ease: "power1.inOut",
       duration: 1,
     });
-  }, []);
+
+
+  });
 
   return (
-    <section className="w-full h-screen flex items-center justify-center relative overflow-hidden px-4">
-      {/* Hero Text */}
-      <div
-        ref={heroRef}
-        className="relative w-full h-full flex flex-col items-center justify-center text-center z-[1] p-4"
-      >
-        <Image
-          src="/logo-white.png"
-          alt="TEDxSJEC"
-          width={500}
-          height={500}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
-          className="rounded-full"
-        />
-        <h1
-          className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white"
-          style={{
-            textShadow: "0 4px 12px rgba(0, 0, 0, 0.5)",
-          }}
-        >
-          Coming Soon!
-        </h1>
-        <p
-          className="text-white/[0.9] text-lg sm:text-xl mt-2 max-w-3xl leading-relaxed"
-          style={{
-            textShadow: "0 3px 8px rgba(0, 0, 0, 0.4)",
-          }}
-        >
-          Join us for a transformative experience where ideas spark innovation
-          and creativity. Stay tuned for an unforgettable TEDx journey filled
-          with powerful talks, bright ideas, and inspiring connections.
-        </p>
+    <>
+      <div className="flex flex-col justify-center items-center  ">
+        {/* Background Image */}
+        <div className="flex flex-col justify-center items-center h-screen  w-full relative">
+          {/* Background Image */}
+          <div className="absolute z-30 flex justify-center items-center img1 ">
+            <div className="relative w-[100vw] h-[100vh] lg:w-[73vw] lg:h-[73vh] opacity-20 mt-20  ">
+              <Image
+                src="/logo.png"
+                className="hero_icon"
+                alt="Background Image"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </div>
+
+          {/* Logo Image */}
+          <div>
+            <Image
+              src={images}
+              alt="Logo"
+              width={700}
+              height={700}
+              className="rounded-full head1 "
+            />
+          </div>
+
+          {/* Coming Soon Text */}
+          <div className="lg:ml-32 tok sm:text-5xl md:text-6xl text-2xl lg:text-7xl font-bold relative text-center mt-4 md:mt-6">
+            <div className="inline-block space-x-2 coming">
+              {["C", "O", "M", "I", "N", "G"].map((letter) => (
+                <span key={letter} className="split-text">
+                  {letter}
+                </span>
+              ))}
+            </div>
+            <span className="ml-10"></span>
+            <div className="inline-block space-x-2 soon text-[#EB0028]">
+              {["S", "O", "O", "N"].map((letter) => (
+                <span key={letter} className="split-text">
+                  {letter}
+                </span>
+              ))}
+            </div>
+            <div className="inline-block space-x-2  text-[white]">
+              {[".", ".", "."].map((letter) => (
+                <span key={letter} className="dot">
+                  {letter}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Scroll Down Button */}
-        <div
-  ref={scrollRef}
-  className="absolute bottom-6 sm:bottom-10 flex flex-col items-center justify-center cursor-pointer group"
+               <div
+                 ref={scrollRef}
+  className="absolute bottom-6 sm:bottom-10 flex flex-col items-center justify-center cursor-pointer back-top group"
   onClick={() => {
     window.scrollTo({
       top: window.innerHeight,
@@ -78,8 +106,12 @@ export const Hero = () => {
     Scroll Down
   </span>
 </div>
-
       </div>
-    </section>
+    </>
   );
 };
+
+export default Hero;
+
+
+

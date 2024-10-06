@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 //======================================
 export const Dots_v1 = () => (
-  <div className="relative flex items-center ">
+  <div className="relative flex items-center mr-28 ">
     <motion.span
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
