@@ -12,20 +12,18 @@ import { easing } from "maath";
 import "@/lib/extenders/bentPlaneGeometry";
 import "@/lib/extenders/meshSineMaterial";
 import { useIsMobile } from "@/hooks/useIsMobile";
+interface CarouselProps {
+    radius: number;
+    images: { src: string }[];
+}
 
-const carouselImages: { src: string }[] = Array.from({ length: 9 }, (_, i) => ({
-  src: `/highlights/img${i + 1}.avif`,
-}));
-
-const radius = 2;
-
-export const Gallery = () => {
+export const Gallery: React.FC<CarouselProps> = ({ radius, images }) => {
   return (
     <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
       <ScrollControls style={{ scrollbarWidth: "none" }} pages={4} infinite>
         <Carousel
           rotation={[0, 0, 0.15]}
-          images={carouselImages}
+          images={images}
           radius={radius}
         />
         <Banner position={[0, -0.15, 0]} radius={radius} />
