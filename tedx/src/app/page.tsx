@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 // Dynamic import for the gallery with 3js rendering
 const Gallery = dynamic(
   () => import("./components/gallery").then((mod) => mod.Gallery),
-  { ssr: false }, 
+  { ssr: false },
 );
 
 const Preloader: React.FC<{ progress: number }> = ({ progress }) => (
@@ -70,13 +70,13 @@ export default function Home() {
     { title: "3", thumbnail: "/SAT00316.jpg" },
   ];
 
-  const velocity = [2, -2];
+  const velocity = [1, -1];
   const [galleryLoading, setGalleryLoading] = useState(true);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setGalleryLoading(false);
-    }, 15000); // Simulated loading time for the gallery
+    }, 12000); // Simulated loading time for the gallery
 
     return () => clearTimeout(timeout);
   }, []);
@@ -144,8 +144,8 @@ export default function Home() {
               Highlights of <span className="text-white">TEDxSJEC 2022</span>
             </h1>
           </div>
-          <div className="w-screen hidden lg:flex justify-center no-scrollbar cursor-pointer">
-            <div className="w-[100vw] mb-24 lg:w-[80vw] h-[60vh] md:h-[75vh] lg:h-[100vh] flex justify-center no-scrollbar flex-row md:flex-col">
+          <div className="w-screen hidden lg:flex justify-center no-scrollbar">
+            <div className="w-[100vw] mb-24 xl:w-[80vw] lg:w-[100vw] h-[60vh] md:h-[75vh] lg:h-[100vh] flex justify-center no-scrollbar flex-row md:flex-col">
               {galleryLoading ? (
                 <div className="flex justify-center items-center w-full h-full">
                   <Loading /> {/* Loading spinner for 5 seconds */}
@@ -175,30 +175,29 @@ export default function Home() {
                 </ScrollVelocity>
               ))}
               <div className="">
-              <ScrollVelocity1 velocity={3} movable={true}>
-  {[
-    <div
-      key="image-container"
-      className="image-container"
-      style={{ display: "flex", gap: "10px" }}
-    >
-      {Array.from({ length: 200 }).map((_, index) => (
-        <img
-          key={index}
-          src="/logo-white.png"
-          className="hero_icon"
-          alt={`Image ${index + 1}`}
-          style={{
-            objectFit: "cover",
-            width: "100%",
-            height: "50px",
-          }}
-        />
-      ))}
-    </div>
-  ]}
-</ScrollVelocity1>
-
+                <ScrollVelocity1 velocity={3} movable={true}>
+                  {[
+                    <div
+                      key="image-container"
+                      className="image-container"
+                      style={{ display: "flex", gap: "10px" }}
+                    >
+                      {Array.from({ length: 200 }).map((_, index) => (
+                        <img
+                          key={index}
+                          src="/logo-white.png"
+                          className="hero_icon"
+                          alt={`Image ${index + 1}`}
+                          style={{
+                            objectFit: "cover",
+                            width: "100%",
+                            height: "50px",
+                          }}
+                        />
+                      ))}
+                    </div>,
+                  ]}
+                </ScrollVelocity1>
               </div>
             </div>
           </div>

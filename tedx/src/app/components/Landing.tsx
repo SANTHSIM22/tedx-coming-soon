@@ -1,4 +1,3 @@
-
 "use client";
 import React from "react";
 import gsap from "gsap";
@@ -28,8 +27,6 @@ const Hero = () => {
       ease: "power1.inOut",
       duration: 1,
     });
-
-
   });
 
   return (
@@ -62,16 +59,16 @@ const Hero = () => {
           </div>
 
           {/* Coming Soon Text */}
-          <div className="lg:ml-32 tok sm:text-5xl md:text-6xl text-2xl lg:text-7xl font-bold relative text-center mt-4 md:mt-6">
-            <div className="inline-block space-x-2 coming">
+          <div className=" tok sm:text-5xl md:text-6xl text-2xl lg:text-7xl font-bold relative text-center mt-4 md:mt-6">
+            <div className="inline-block space-x-2  coming">
               {["C", "O", "M", "I", "N", "G"].map((letter) => (
                 <span key={letter} className="split-text">
                   {letter}
                 </span>
               ))}
             </div>
-            <span className="ml-10"></span>
-            <div className="inline-block space-x-2 soon text-[#EB0028]">
+            <span className="ml-10 lg:ml-15"></span>
+            <div className="inline-block space-x-2  soon text-[#EB0028]">
               {["S", "O", "O", "N"].map((letter) => (
                 <span key={letter} className="split-text">
                   {letter}
@@ -89,29 +86,26 @@ const Hero = () => {
         </div>
 
         {/* Scroll Down Button */}
-               <div
-                 ref={scrollRef}
-  className="absolute bottom-6 sm:bottom-10 flex flex-col items-center justify-center cursor-pointer back-top group"
-  onClick={() => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth',
-    });
-  }}
->
-  <span className="text-white/90 text-2xl group-hover:scale-110 transition-transform">
-    ↓
-  </span>
-  <span className="mt-1 text-sm text-white/90 group-hover:text-red-500 transition-colors">
-    Scroll Down
-  </span>
-</div>
+        <div
+          ref={scrollRef}
+          className="absolute bottom-6 sm:bottom-10 flex flex-col items-center justify-center cursor-pointer back-top group"
+          onClick={() => {
+            window.scrollTo({
+              top: window.innerHeight,
+              behavior: "smooth",
+            });
+          }}
+        >
+          <span className="text-white/90 text-2xl group-hover:scale-110 transition-transform">
+            ↓
+          </span>
+          <span className="mt-1 text-sm text-white/90 group-hover:text-red-500 transition-colors">
+            Scroll Down
+          </span>
+        </div>
       </div>
     </>
   );
 };
 
 export default Hero;
-
-
-

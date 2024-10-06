@@ -59,16 +59,12 @@ export default function ScrollVelocity({
     }
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
 
-    // Update baseX
     baseX.set(baseX.get() + moveBy);
-
-    // Reset the baseX if it goes beyond a certain threshold to create infinite scroll
     if (baseX.get() <= -100) {
       baseX.set(0);
     }
   }
 
-  // Duplicate children to create infinite scroll
   const renderChildren = () => {
     if (typeof children === "string") {
       return Array.from({ length: 5 }).map((_, idx) => (
@@ -87,7 +83,6 @@ export default function ScrollVelocity({
         style={{ x }}
       >
         {renderChildren()}
-        {/* Duplicate the content for infinite scrolling effect */}
         {renderChildren()}
       </motion.div>
     </div>

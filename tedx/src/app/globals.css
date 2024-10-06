@@ -108,8 +108,8 @@ canvas {
   animation: fade-in 5s ease 1s forwards;
 }
 
-
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 

@@ -25,7 +25,7 @@ export default function RootLayout({
       </head>
       <body>
         <>
-         <TEDxStarsCanvas/>
+          <TEDxStarsCanvas />
           {children}
         </>
       </body>

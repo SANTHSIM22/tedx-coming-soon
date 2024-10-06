@@ -13,7 +13,7 @@ interface StarBackgroundProps {
 
 const TEDxStarBackground: React.FC<StarBackgroundProps> = ({
   count = 5000,
-  radius = 1.5
+  radius = 1.5,
 }) => {
   const ref = useRef<THREE.Points>(null);
 
@@ -44,7 +44,8 @@ const TEDxStarBackground: React.FC<StarBackgroundProps> = ({
 
   const updatePositions = useCallback((delta: number) => {
     if (ref.current) {
-      const positions = ref.current.geometry.attributes.position.array as Float32Array;
+      const positions = ref.current.geometry.attributes.position
+        .array as Float32Array;
       for (let i = 0; i < positions.length; i += 3) {
         positions[i] += Math.sin(Date.now() * 0.001 + i) * 0.0002 * delta;
         positions[i + 1] += Math.cos(Date.now() * 0.002 + i) * 0.0002 * delta;
@@ -71,7 +72,7 @@ const TEDxStarBackground: React.FC<StarBackgroundProps> = ({
       stride: 3,
       frustumCulled: false,
     }),
-    [sphere]
+    [sphere],
   );
 
   return (
@@ -94,7 +95,9 @@ export const TEDxStarsCanvas: React.FC = () => (
   <div className="w-full h-full fixed inset-0 -z-10">
     <Canvas
       camera={{ position: [0, 0, 1] }}
-      style={{ background: "radial-gradient(circle, #1a1a1a 0%, #000000 100%)" }}
+      style={{
+        background: "radial-gradient(circle, #1a1a1a 0%, #000000 100%)",
+      }}
     >
       <TEDxStarBackground />
     </Canvas>

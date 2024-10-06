@@ -5,12 +5,15 @@ const Footer = () => {
     <>
       <footer className="text-white relative bottom-0 left-0 z-20 right-0  footeri">
         <div className="container mx-auto flex flex-col-reverse sm:flex-row justify-between items-center footeri ">
-          <p className="text-center sm:text-left mb-4 sm:mt-4 px-8 sm:mb-4">
+          <p className="text-center sm:text-left mb-4 mt-4 px-8 sm:mb-4">
             &copy; {new Date().getFullYear()} Tedx SJEC. All rights reserved.
           </p>
           <ul className="flex flex-wrap justify-center space-x-6 px-8">
             <li className="hover:-translate-y-3 transition duration-300">
-              <a href="https://www.instagram.com/tedxsjec/?__pwa=1" className="hover:underline l">
+              <a
+                href="https://www.instagram.com/tedxsjec/?__pwa=1"
+                className="hover:underline l"
+              >
                 <svg
                   className="icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -36,9 +39,11 @@ const Footer = () => {
               </a>
             </li>
 
-
             <li className="hover:-translate-y-3 transition duration-300">
-              <a href="#services" className="hover:underline l">
+              <a
+                href="https://www.linkedin.com/company/tedxsjec/"
+                className="hover:underline l"
+              >
                 <svg
                   className="icon"
                   xmlns="http://www.w3.org/2000/svg"
