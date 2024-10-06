@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Hero from "./components/hero";
+import { Hero } from "./components/hero";
 import dynamic from "next/dynamic";
 import { BacktoTopButton } from "./components/back-to-top";
 import Loading from "./components/loading";
@@ -132,7 +132,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative min-h-screen">
+      <div className=" min-h-screen flex flex-col ">
         <div>
           <Hero />
         </div>
@@ -175,6 +175,7 @@ export default function Home() {
                   ))}
                 </ScrollVelocity>
               ))}
+              <div>
               <ScrollVelocity1 velocity={3} movable={true}>
                 <div
                   className="image-container"
@@ -195,6 +196,7 @@ export default function Home() {
                   ))}
                 </div>
               </ScrollVelocity1>
+              </div>
             </div>
           </div>
           {/* <BacktoTopButton /> */}

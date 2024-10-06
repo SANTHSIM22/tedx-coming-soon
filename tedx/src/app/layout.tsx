@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import "./globals.css";
-import { StarsCanvas } from "./ui/stars";
+import TEDxStarsCanvas from "./ui/stars";
 import { Dots_v1 } from "./components/start-loader";
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
       </head>
       <body>
         <>
-          <StarsCanvas />
+         <TEDxStarsCanvas/>
           {children}
         </>
       </body>
