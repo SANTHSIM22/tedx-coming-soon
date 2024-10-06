@@ -1,4 +1,6 @@
+import { TEDxStarsCanvas } from "@/components/ui/stars";
 import "./globals.css";
+import Lenis from "@/components/Lenis";
 
 export default function RootLayout({
   children,
@@ -7,7 +9,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="no-scrollbar">
-      <body>{children}</body>
+      <body className="mx-auto">
+        <TEDxStarsCanvas />
+        <Lenis>{children}</Lenis>
+      </body>
     </html>
   );
 }

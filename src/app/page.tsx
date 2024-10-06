@@ -1,24 +1,26 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+import { Footer } from "@/components/sections/footer";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { motion } from "framer-motion";
 import { Inter } from "next/font/google";
-import React, { useEffect, useState } from "react";
-import { Footer } from "@/components/sections/footer";
-import { Hero } from "@/components/sections/hero";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 
-const Gallery = dynamic(() => import("@/components/sections/gallery").then((galleryModule) => galleryModule.Gallery), {
-  ssr: false,
-});
+import { Hero2 } from "@/components/sections/hero2";
+import { PreviousHighlights } from "@/components/sections/highlights";
+import LogoReveal from "@/components/sections/logoreveal";
 
 const inter = Inter({
   weight: ["300", "400", "700"],
   subsets: ["latin"],
 });
 
-const Preloader: React.FC<{ progress: number }> = ({ progress }) => (
+interface PreloaderProps {
+  progress: number;
+}
+
+const Preloader: React.FC<PreloaderProps> = ({ progress }) => (
   <div className="fixed inset-0 z-50 flex flex-col items-center justify-center">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -30,14 +32,15 @@ const Preloader: React.FC<{ progress: number }> = ({ progress }) => (
         <Image
           src="/tedxsjec-white.png"
           alt="TEDxSJEC"
-          width={400}
-          height={400}
+          width={200}
+          height={200}
           className="rounded-full"
+          priority
         />
       </div>
       <div className="text-6xl md:text-8xl font-bold mb-8">
         <NumberTicker value={progress} className="text-[#e62b1e]" />
-        <span className="text-3xl md:text-5xl ml-2">%</span>
+        <span className="text-3xl md:text-5xl ml-2 text-white">%</span>
       </div>
       <div className="w-64 md:w-96 h-2 bg-gray-700 rounded-full overflow-hidden">
         <motion.div
@@ -47,65 +50,46 @@ const Preloader: React.FC<{ progress: number }> = ({ progress }) => (
           transition={{ duration: 0.5 }}
         />
       </div>
-      <div className="mt-8 text-lg md:text-xl font-light">
+      <div className="mt-8 text-lg md:text-xl font-light text-white">
         Loading ideas worth spreading...
       </div>
     </motion.div>
   </div>
 );
 
-export default function Home() {
+const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    const startLoading = () => {
-      interval = setInterval(() => {
-        setProgress((prevProgress) => {
-          if (prevProgress >= 100) {
-            clearInterval(interval);
-            setTimeout(() => setLoading(false), 1000);
-            return 100;
-          }
-          return prevProgress + 1;
-        });
-      }, 50);
-    };
-
-    startLoading();
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          clearInterval(interval);
+          setTimeout(() => setLoading(false), 1000);
+          return 100;
+        }
+        return Math.min(prevProgress + 1, 100);
+      });
+    }, 50);
 
     return () => clearInterval(interval);
   }, []);
 
   if (loading) {
-    return (
-      <>
-        <Preloader progress={progress} />
-      </>
-    );
+    return <Preloader progress={progress} />;
   }
 
   return (
-    <div className={`flex flex-col min-h-screen ${inter.className}`}>
-      <main className="flex-grow">
-        <section className="relative">
-          <Hero />
-        </section>
-
-        <section id="gallery-section" className="py-16 md:py-24 lg:py-32">
-          <div className="container mx-auto px-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#e62b1e] text-center mb-8 md:mb-12">
-              Highlights of <span>TEDxSJEC 2022</span>
-            </h1>
-            <div className="w-full aspect-video md:aspect-[16/9] lg:aspect-[21/9]">
-              <Gallery />
-            </div>
-          </div>
-        </section>
+    <div className={`min-h-screen flex flex-col ${inter.className}`}>
+      <main className="flex-1">
+        <Hero2 />
+        <PreviousHighlights />
+        <LogoReveal />
       </main>
       <Footer />
     </div>
   );
-}
+};
+
+export default Home;
