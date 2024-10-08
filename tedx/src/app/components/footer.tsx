@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="text-white relative bottom-0 left-0 z-20 right-0  footeri">
         <div className="container mx-auto flex flex-col-reverse sm:flex-row justify-between items-center footeri ">
           <p className="text-center sm:text-left mb-4 mt-4 px-8 sm:mb-4">
-            &copy; {new Date().getFullYear()} Tedx SJEC. All rights reserved.
+            &copy; {new Date().getFullYear()} TEDxSJEC. All rights reserved.
           </p>
           <ul className="flex flex-wrap justify-center space-x-6 px-8">
             <li className="hover:-translate-y-3 transition duration-300">
