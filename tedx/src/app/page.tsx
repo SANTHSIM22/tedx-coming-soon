@@ -61,7 +61,7 @@ export default function Home() {
         { title: "3", thumbnail: "/SAT00249.avif" },
         { title: "3", thumbnail: "/IMG_3414.avif" },
         { title: "3", thumbnail: "/IMG_2865.avif" },
-        { title: "3", thumbnail: "/SAT00316.avif" },
+        { title: "3", thumbnail: "/IMG_3309.avif" },
     ];
 
     const velocity = [1, -1];
