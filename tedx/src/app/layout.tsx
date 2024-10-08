@@ -11,7 +11,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="no-scrollbar">
-            <Script defer src={process.env.WEBSITE_SRC} data-website-id={process.env.WEBSITE_ID}></Script>
+            <Script
+                defer
+                src={process.env.NEXT_PUBLIC_WEBSITE_SRC}
+                data-website-id={process.env.NEXT_PUBLIC_WEBSITE_ID}
+            ></Script>
             <head>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
