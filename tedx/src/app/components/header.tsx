@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import images from "@/images/logo-white.png";
+import images from "@/images/logo-white.avif";
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {

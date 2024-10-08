@@ -3,7 +3,7 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import images from "@/images/logo-white.png";
+import images from "@/images/logo-white.avif";
 import { useRef } from "react";
 const Hero = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ const Hero = () => {
           <div className="absolute z-30 flex justify-center items-center img1 ">
             <div className="relative w-[100vw] h-[100vh] lg:w-[73vw] lg:h-[73vh] opacity-20 mt-20  ">
               <Image
-                src="/logo.png"
+                src="/logo.avif"
                 className="hero_icon"
                 alt="Background Image"
                 layout="fill"
