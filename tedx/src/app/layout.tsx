@@ -23,6 +23,30 @@ export default function RootLayout({
                     href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
                     rel="stylesheet"
                 />
+
+                <meta
+                    name="description"
+                    content="TEDxSJEC: Inspiring talks from the brightest minds at St. Joseph Engineering College."
+                />
+                <meta
+                    name="keywords"
+                    content="TEDx, TEDxSJEC, talks, inspiration, innovation, St. Joseph Engineering College"
+                />
+                <meta name="author" content="TEDxSJEC Team" />
+                <meta property="og:title" content="TEDxSJEC" />
+                <meta
+                    property="og:description"
+                    content="Join us for inspiring talks and discussions at TEDxSJEC."
+                />
+                <meta property="og:image" content="/logo-white.avif" />
+                <meta property="og:url" content="https://tedxsjec.in/" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="TEDxSJEC" />
+                <meta
+                    name="twitter:description"
+                    content="Join us for inspiring talks and discussions at TEDxSJEC."
+                />
+                <meta name="twitter:image" content="/logo-white.avif" />
             </head>
             <body>
                 <>
