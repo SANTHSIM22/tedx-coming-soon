@@ -24,6 +24,8 @@ export default function RootLayout({
                     rel="stylesheet"
                 />
 
+                <title>TEDxSJEC</title>
+
                 <meta
                     name="description"
                     content="TEDxSJEC: Inspiring talks from the brightest minds at St. Joseph Engineering College."
